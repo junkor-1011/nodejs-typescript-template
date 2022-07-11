@@ -1,16 +1,17 @@
 const { build } = require('esbuild');
+const glob = require('glob');
 
 const tsconfig = 'tsconfig-esbuild.json';
 
-let watch = false;
-if (process.argv[2] === '--watch') {
-  watch = true;
-}
-const entryPoints = ['src/index.ts'];
+const watch = process.argv[2] === '--watch';
+
+const entryPoints = process.argv[2] === '--bundle' ? ['src/index.ts'] : glob.sync('src/**/*.ts');
+
+const bundle = process.argv[2] === '--bundle';
 
 build({
   entryPoints,
-  bundle: true,
+  bundle,
   minify: true,
   sourcemap: true,
   outbase: 'src',
@@ -19,4 +20,5 @@ build({
   external: [],
   watch,
   tsconfig,
+  format: 'cjs',
 });
