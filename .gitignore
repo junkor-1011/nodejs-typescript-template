@@ -147,5 +147,5 @@ dist
 # -- CUSTOM ------------------------------
 
 # typedoc
-docs/
+.apidocs/
 
