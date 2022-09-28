@@ -6,6 +6,9 @@
   "description": "",
   "license": "NOLICENSE",
   "private": true,
+  "engines": {
+    "node": ">=16.17.1"
+  },
   "scripts": {
     "unit": "jest --passWithNoTests",
     "test": "npm run compile && npm run unit",
